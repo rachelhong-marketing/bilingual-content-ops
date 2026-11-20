@@ -1,6 +1,8 @@
-# Bilingual Content Ops
+# Bilingual Content Skill
 
-A repeatable system for turning one English article idea into a full set of English and Chinese marketing content: blog posts, social posts and an email newsletter.
+A Claude Code skill and workflow for turning one English article idea into a full set of English and Chinese marketing content: blog posts, social posts and an email newsletter.
+
+The skill itself is in [`skill/SKILL.md`](skill/SKILL.md). The rest of this repo explains the workflow and shows a worked example.
 
 Each piece of content ships as:
 - An **English blog post** (written first)
@@ -41,6 +43,12 @@ Chinese adaptation (written fresh in Chinese, same ideas, not translated word fo
 ## Why English first?
 
 Starting in English gives one clear source version that is easy to review, edit and approve. The Chinese version is then adapted for a Chinese-speaking professional audience: same ideas, with the examples, phrasing and structure changed so it reads naturally in Chinese. A straight translation tends to sound stiff, so the adaptation step is written fresh, then checked against the English for accuracy.
+
+---
+
+## Use the skill
+
+Copy `skill/SKILL.md` into a folder named `bilingual-content` inside your Claude Code skills folder, then ask for the content set in plain words, for example: "Write a bilingual content set about [topic]." Fill in your voice notes and brand placeholders first. The skill stops at a review gate after the English article and again after the Chinese adaptation.
 
 ---
 
