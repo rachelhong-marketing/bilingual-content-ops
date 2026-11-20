@@ -1,13 +1,13 @@
 # Bilingual Content Ops
 
-A repeatable system for producing bilingual (Chinese + English) marketing content across multiple platforms from a single article idea.
+A repeatable system for turning one English article idea into a full set of English and Chinese marketing content: blog posts, social posts and an email newsletter.
 
 Each piece of content ships as:
-- A **Chinese blog post** (long-form, for a Chinese-speaking professional audience)
-- An **English blog post** (adapted for an English-speaking audience — not a translation)
-- **RedNote (Xiaohongshu) cards** — visual summary images for short-form social
-- A **LinkedIn post** — adapted for a professional English-speaking feed
-- An **HTML email newsletter** — promotes the article to a subscriber list
+- An **English blog post** (written first)
+- A **LinkedIn post** (English social, adapted from the blog)
+- A **Chinese blog post** (written fresh in Chinese, not a word-for-word translation)
+- **RedNote (Xiaohongshu) cards** (Chinese social, as visual summary images)
+- An **HTML email newsletter** (promotes the article to a subscriber list)
 
 ---
 
@@ -17,7 +17,14 @@ Each piece of content ships as:
 Topic / angle
      │
      ▼
-Chinese article (long-form, ~950 chars for RedNote, longer for blog)
+English article (written first, in a plain first-person voice)
+     │
+     ├──► English blog post (HTML)
+     │
+     ├──► LinkedIn post (plain text, link in first comment)
+     │
+     ▼
+Chinese adaptation (written fresh in Chinese, same ideas, not translated word for word)
      │
      ├──► Chinese blog post (HTML)
      │
@@ -25,64 +32,68 @@ Chinese article (long-form, ~950 chars for RedNote, longer for blog)
      │         Card 1: key framework or diagram
      │         Card 2: criteria / checklist
      │
-     ├──► Email newsletter (HTML, Mailchimp-compatible)
-     │         Promotes the article, links back to blog
-     │
-     ▼
-English adaptation (written fresh in English voice, not translated)
-     │
-     ├──► English blog post (HTML)
-     │
-     └──► LinkedIn post (plain text, link in first comment)
+     └──► Email newsletter (HTML, Mailchimp-compatible)
+               Promotes the article, links back to the blog
 ```
 
 ---
 
-## Why Chinese first?
+## Why English first?
 
-The primary audience for these articles is Chinese-speaking marketing professionals in North America. Writing Chinese first ensures the content is grounded in that voice and context. The English version is then written independently for a broader English-speaking audience — same ideas, different framing and tone.
+Starting in English gives one clear source version that is easy to review, edit and approve. The Chinese version is then adapted for a Chinese-speaking professional audience: same ideas, with the examples, phrasing and structure changed so it reads naturally in Chinese. A straight translation tends to sound stiff, so the adaptation step is written fresh, then checked against the English for accuracy.
 
 ---
 
 ## Output formats explained
 
-### Chinese blog post (`01-chinese-blog.html`)
-Long-form article in flowing paragraphs, no numbered sections or bullet points. Written in first-person, conversational but credible. Mix of Chinese and English terms inline — natural, no special punctuation. Hosted on a blog and shared to RedNote as a link.
+### English blog post (`01-english-blog.html`)
+Long-form article in a conversational first-person voice. No numbered sections or bullet-point lists, so it reads like a person talking. Includes the two RedNote card images as figures.
 
-### English blog post (`02-english-blog.html`)
-Adapted from the same topic — not a translation. Written directly in English in a conversational first-person voice. Same ideas, different structure and examples where appropriate.
+### LinkedIn post (`03-linkedin-post.md`)
+Plain text post adapted for a LinkedIn feed. No formatting, because LinkedIn buries formatted posts. Includes notes on posting timing and link placement.
 
-### RedNote cards (`03-rednote-card-01.jpg`, `03-rednote-card-02.jpg`)
-Retina-quality JPEG images (1440px wide, ~300KB each) built from HTML/SVG and exported via Chrome headless at 3x device scale. Designed in a navy/gold/cream color system. Each card summarizes one key concept from the article visually — uploaded as photos on Xiaohongshu alongside the short-form post text.
+### Chinese blog post (`02-chinese-blog.html`)
+Long-form article in flowing paragraphs, written in first person, conversational but credible. Chinese and English terms are mixed inline the way professionals actually write, with no special punctuation.
 
-### Email newsletter (`04-email-newsletter.html`)
-Mailchimp-compatible HTML email. 600px fixed width, table-based layout. Includes a teaser, a callout block with the key insight, a CTA button linking to the full article, and a booking CTA footer. Uses `*|FNAME|*` and `*|UNSUB|*` Mailchimp merge tags.
+### RedNote cards (`04-rednote-card-01.jpg`, `04-rednote-card-02.jpg`)
+Retina-quality JPEG images (1440px wide, about 300KB each) built from HTML and SVG and exported with Chrome headless at 3x device scale. Each card summarizes one key concept from the article visually and is uploaded as a photo on Xiaohongshu alongside the short post text.
 
-### LinkedIn post (`05-linkedin-post.md`)
-Plain text post adapted for a LinkedIn feed. No formatting — LinkedIn buries formatted posts. Includes notes on posting timing and link placement.
+### Email newsletter (`05-email-newsletter.html`)
+Mailchimp-compatible HTML email. 600px fixed width, table-based layout. Includes a teaser, a callout block with the key insight, a button linking to the full article and a booking footer. Uses `*|FNAME|*` and `*|UNSUB|*` Mailchimp merge tags.
 
 ---
 
 ## Example
 
-[`examples/b2b-campaign-planning/`](examples/b2b-campaign-planning/) — *Before You Pick a Campaign Theme, Do These Things First*
+[`examples/b2b-campaign-planning/`](examples/b2b-campaign-planning/): *Before You Pick a Campaign Theme, Do These Things First*
 
-Topic: how to run a campaign planning brainstorm — which teams to involve, what inputs to gather, and what makes a campaign theme strong enough to carry across channels. Applies to both B2B and B2C.
+Topic: how to run a campaign planning brainstorm: which teams to involve, what inputs to gather, and what makes a campaign theme strong enough to carry across channels. Applies to both B2B and B2C.
 
-| File | Format | Platform |
-|---|---|---|
-| `01-chinese-blog.html` | HTML | Blog (Chinese) |
-| `02-english-blog.html` | HTML | Blog (English) |
-| `03-rednote-card-01.jpg` | JPEG | Xiaohongshu |
-| `03-rednote-card-02.jpg` | JPEG | Xiaohongshu |
-| `04-email-newsletter.html` | HTML | Mailchimp |
-| `05-linkedin-post.md` | Markdown | LinkedIn |
+| Order | File | Format | Platform |
+|---|---|---|---|
+| 1 | `01-english-blog.html` | HTML | Blog (English) |
+| 2 | `02-chinese-blog.html` | HTML | Blog (Chinese) |
+| 3 | `03-linkedin-post.md` | Markdown | LinkedIn (English social) |
+| 4 | `04-rednote-card-01.jpg`, `04-rednote-card-02.jpg` | JPEG | Xiaohongshu (Chinese social) |
+| 5 | `05-email-newsletter.html` | HTML | Mailchimp |
 
 ---
 
 ## Tools used
 
-- Articles written and edited in Claude Code
-- RedNote cards: HTML/SVG → Chrome headless (`--force-device-scale-factor=3`) → JPEG via `sips`
+- Articles drafted and edited with Claude Code
+- RedNote cards: HTML and SVG, then Chrome headless (`--force-device-scale-factor=3`), then JPEG via `sips`
 - Email: hand-coded HTML, table-based layout, tested in Mailchimp
 - Blog: static HTML deployed via Netlify
+
+---
+
+## Limits
+
+- Examples use placeholders (`[Your Brand]`, `[your-site.com]`). Replace them with your own before publishing.
+- A native speaker should review the adaptation, since idioms and tone are easy to get slightly wrong.
+- This is a workflow and a set of formats, not an automated translation tool.
+
+## License
+
+MIT. See `LICENSE`.
